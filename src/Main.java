@@ -1,7 +1,5 @@
 import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
 
     //Exercice 1 : Nombre Pair ou Impair
@@ -14,23 +12,34 @@ public class Main {
 
     //Exercice 2 : Calcul de moyenne
     public static void moyenne() {
-        //double [] notes = new double[3];
+        Scanner scanner = new Scanner(System.in);
         double somme = 0;
-        int indice = 0;
-        for(int i=0; i < 3; i++ ) {
+        System.out.println("Combien de notes ?");
+        int indice = scanner.nextInt();
+        for(int i=0; i < indice; i++ ) {
             System.out.println("Entrez une note : ");
-            Scanner scanner = new Scanner(System.in);
             somme += scanner.nextDouble();
-            indice ++;
-            //notes[i] = scanner.nextDouble();
         }
         System.out.println("La moyenne est : " + somme/indice);
+    }
+    // Exercice 3 : afficher table de multiplication
+    public static void multiplication() {
+        Scanner scanner = new Scanner(System.in);
 
+        //demander le nombre
+        System.out.println("Entrez un entier");
+        int nombre = scanner.nextInt();
+
+        //afficher la table
+        System.out.println("Table de : " + nombre);
+        for (int i = 1 ; i <= 10 ; i++) {
+            System.out.println(nombre + "x" + i + "=" + nombre*i);
+        }
     }
 
     public static void main(String[] args) {
       // pairImpair();
-       moyenne();
-
+      // moyenne();
+      multiplication();
     }
 }
