@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -37,9 +38,30 @@ public class Main {
         }
     }
 
+// Exercice 4 : devinette
+    public static void devinette() {
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+        int nombreSecret = random.nextInt(1,100);
+        int i = 101;
+        System.out.println("Devinez le nombre entre 0 et 100 !");
+        while (i != nombreSecret) {
+            System.out.println("Entrez votre proposition : ");
+            i = scanner.nextInt();
+
+            if (i != nombreSecret) {
+                System.out.println(i < nombreSecret ?"Trop petit !":"Trop grand !");
+            } else {
+                System.out.println("gg wp");
+            }
+        }
+    }
+    
+
     public static void main(String[] args) {
       // pairImpair();
       // moyenne();
-      multiplication();
+      //multiplication();
+        devinette();
     }
 }
