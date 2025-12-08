@@ -56,12 +56,32 @@ public class Main {
             }
         }
     }
-    
+
+    //Exercice 5 : Tableau et calculs
+    public static void tableauCalculs() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Combien de nombres voulez-vous saisir ?");
+        int quantite = scanner.nextInt();
+        double tableau[] = new double[quantite];
+        double somme = 0;
+        for (int i = 0; i < quantite ; i++) {
+            System.out.println("Entrez le nombre "+ (i+1) );
+            tableau[i] = scanner.nextDouble();
+        }
+        for(int i=0; i < quantite ; i++ ) {
+            somme += tableau[i];
+        }
+
+        double moyenne = somme/quantite;
+        System.out.println("Somme : " + somme + " | " + "Moyenne : " + moyenne);
+
+    }
 
     public static void main(String[] args) {
       // pairImpair();
       // moyenne();
       //multiplication();
-        devinette();
+      //  devinette();
+        tableauCalculs();
     }
 }
