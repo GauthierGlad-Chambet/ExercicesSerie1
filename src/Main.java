@@ -1,3 +1,7 @@
+package JSE.src;
+
+import JSE.src.Personne;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -109,6 +113,14 @@ public class Main {
       // multiplication();
       // devinette();
       // tableauCalculs();
-       compterVoyelles();
+      // compterVoyelles();
+
+        Personne gauthier = new Personne("Glad-Chambet", "Gauthier", 29);
+        gauthier.direBonjour();
+
+        System.out.println(gauthier.getNom());
     }
+
+
 }
+
