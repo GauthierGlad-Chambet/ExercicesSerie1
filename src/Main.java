@@ -200,6 +200,7 @@ public class Main {
         enseignant5.setFiliere(cda);
 
         System.out.println("\nListe des apprenants par filière :");
+        //pour chaque filiere
         for (Filiere filiere : filieres ) {
             boolean etuVide =  true;
             boolean formatVide =  true;
@@ -208,12 +209,17 @@ public class Main {
 
             System.out.println("\nFilière : " + filiere.getLibelle());
             System.out.print("Formateurs : ");
+            //pour chaque enseignant
             for (Enseignant enseignant : enseignants) {
+                //si le tableau filiere de l'enseignant n'est pas vide
                 if (enseignant.getFiliere() != null) {
+                    //pour chacune des filières de l'enseignant
                     for (Filiere filiereEns : enseignant.getFiliere()) {
+                        //si la filière de l'enseignant correspond à la filiere en train d'etre parcourue (1ere boucle)
                         if (filiere == filiereEns) {
                             System.out.print(comaFlag ?", ":"");
                             comaFlag = true;
+                            //on écrit le nom de l'enseignant
                             System.out.print(enseignant.getPrenom() + " " + enseignant.getNom());
                             formatVide = false;
                         }
@@ -221,11 +227,14 @@ public class Main {
                 }
             }
             if (formatVide) {
-                System.out.println("Pas d'inscrit");
+                System.out.println("Pas encore de formateur");
             }
             System.out.println("");
+            //pour chaque étudiant
             for (Etudiant etudiant : etudiants) {
+                //si la filière de l'étudiant correspond à la filiere en train d'etre parcourue (1ere boucle)
                 if (filiere == etudiant.getFiliere()) {
+                    //on écrit le nom de l'étudiant
                     System.out.println(nb + "- " + etudiant.getPrenom() + " " + etudiant.getNom());
                     etuVide = false;
                     nb++;
