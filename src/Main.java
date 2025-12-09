@@ -44,11 +44,14 @@ public class Main {
         Random random = new Random();
         int nombreSecret = random.nextInt(1,100);
         int i = 101;
+
+        //Question et demander proposition
         System.out.println("Devinez le nombre entre 0 et 100 !");
         while (i != nombreSecret) {
             System.out.println("Entrez votre proposition : ");
             i = scanner.nextInt();
 
+            //condition de réponse
             if (i != nombreSecret) {
                 System.out.println(i < nombreSecret ?"Trop petit !":"Trop grand !");
             } else {
@@ -64,24 +67,48 @@ public class Main {
         int quantite = scanner.nextInt();
         double tableau[] = new double[quantite];
         double somme = 0;
+
+        //saisie des valeurs
         for (int i = 0; i < quantite ; i++) {
             System.out.println("Entrez le nombre "+ (i+1) );
             tableau[i] = scanner.nextDouble();
         }
+
+        //parcours du tableau pour faire la somme
         for(int i=0; i < quantite ; i++ ) {
             somme += tableau[i];
         }
 
+        //calcul de la moyenne
         double moyenne = somme/quantite;
         System.out.println("Somme : " + somme + " | " + "Moyenne : " + moyenne);
+    }
 
+    // Exercice 6 : Comptage de voyelles
+    public static void compterVoyelles() {
+        Scanner scanner = new Scanner(System.in);
+        int compteur = 0;
+        System.out.println("Entrez un texte : ");
+        char[] phrase = scanner.nextLine().toLowerCase().toCharArray();
+        for (char c : phrase) {
+            if (       c == 'a'
+                    || c == 'e'
+                    || c == 'i'
+                    || c == 'o'
+                    || c == 'u'
+                    || c == 'y') {
+                compteur += 1;
+            }
+        }
+        System.out.println(compteur);
     }
 
     public static void main(String[] args) {
       // pairImpair();
       // moyenne();
-      //multiplication();
-      //  devinette();
-        tableauCalculs();
+      // multiplication();
+      // devinette();
+      // tableauCalculs();
+       compterVoyelles();
     }
 }
