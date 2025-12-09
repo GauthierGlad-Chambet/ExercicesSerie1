@@ -1,6 +1,8 @@
 package JSE.src;
 
 import JSE.src.Package.Enseignant;
+import JSE.src.Package.Etudiant;
+import JSE.src.Package.Filiere;
 import JSE.src.Package.Specialite;
 
 import java.util.Random;
@@ -116,9 +118,13 @@ public class Main {
       // tableauCalculs();
       // compterVoyelles();
 
+        // Création d'un objet test
         //Personne gauthier = new Personne("Glad-Chambet", "Gauthier", 29);
         //gauthier.direBonjour();
         //System.out.println(gauthier.getNom());
+
+
+        //POO - Exercice 1 : Affichage enseignant & specialite
 
         Specialite javaEE = new Specialite("JAVA/JEE");
         Specialite htmlCss = new Specialite("HTML/CSS");
@@ -128,21 +134,24 @@ public class Main {
 
         Specialite[] specialites = {javaEE, htmlCss, gestionDeProjet, js, php};
 
-        Enseignant enseignant1 = new Enseignant("Jacques", javaEE);
-        Enseignant enseignant2 = new Enseignant("Michel", htmlCss);
-        Enseignant enseignant3 = new Enseignant("Paul", gestionDeProjet);
-        Enseignant enseignant4 = new Enseignant("Karine", javaEE);
-        Enseignant enseignant5 = new Enseignant("Edouard", php);
+        Enseignant enseignant1 = new Enseignant("Jacques", "Lanoix", javaEE);
+        Enseignant enseignant2 = new Enseignant("Michel", "Brunet", javaEE);
+        Enseignant enseignant3 = new Enseignant("Paul",  "Kalkbrener", php);
+        Enseignant enseignant4 = new Enseignant("Karine", "Lavendeuse", js);
+        Enseignant enseignant5 = new Enseignant("Edouard", "Grills", gestionDeProjet);
 
         Enseignant[] enseignants = {enseignant1, enseignant2, enseignant3, enseignant4, enseignant5};
 
-        for (int i = 0 ; i < 5 ; i++ ) {
+        System.out.println("\nListe des enseignants par spécialité :");
+        for (Specialite specialite : specialites) {
             boolean vide =  true;
-            System.out.println("Spécialité : " + specialites[i].getNom() + ", enseignants : ");
-            for (int cpt = 0; cpt < 5 ; cpt++) {
-                if (specialites[i] == enseignants[cpt].getSpecialite()) {
-                    System.out.println(enseignants[cpt].getNom());
+            int nb = 1;
+            System.out.println("\nSpécialité : " + specialite.getNom());
+            for (Enseignant enseignant : enseignants) {
+                if (specialite == enseignant.getSpecialite()) {
+                    System.out.println(nb + "- " + enseignant.getPrenom() + " " + enseignant.getNom());
                     vide = false;
+                    nb++;
                 }
             }
             if (vide) {
@@ -150,6 +159,82 @@ public class Main {
             }
         }
 
+        //POO - Exercice 2 : Affichage étudiant et filière
+
+        Filiere cda = new Filiere("CDA", "01");
+        Filiere marketing = new Filiere("Marketing", "02");
+        Filiere assistanceDeVie = new Filiere("Assistance De Vie", "03");
+
+        Filiere[] filieres = {cda, marketing, assistanceDeVie};
+
+        Etudiant etudiant1 = new Etudiant("Simpson", "Homer", cda );
+        Etudiant etudiant2 = new Etudiant("Simpson", "Bart", cda );
+        Etudiant etudiant3 = new Etudiant("Vanessa", "Sultan", marketing );
+        Etudiant etudiant4 = new Etudiant("Simpson", "Marge", marketing );
+        Etudiant etudiant5 = new Etudiant("Simpson", "Lisa", marketing );
+
+        Etudiant[] etudiants = {etudiant1, etudiant2, etudiant3, etudiant4, etudiant5};
+
+        System.out.println("\nListe des étudiants par filière :");
+        for (Filiere filiere : filieres ) {
+            boolean vide =  true;
+            int nb = 1;
+            System.out.println("\nFilière : " + filiere.getLibelle());
+            for (Etudiant etudiant : etudiants) {
+                if (filiere == etudiant.getFiliere()) {
+                    System.out.println(nb + "- " + etudiant.getPrenom() + " " + etudiant.getNom());
+                    vide = false;
+                    nb++;
+                }
+            }
+            if (vide) {
+                System.out.println("Pas d'inscrit");
+            }
+        }
+
+        //POO - Exercice 3 : afficher formation, nom formateur, élèves
+        enseignant1.setFiliere(cda, marketing);
+        enseignant2.setFiliere(marketing, assistanceDeVie);
+        enseignant3.setFiliere(cda);
+        enseignant4.setFiliere(marketing);
+        enseignant5.setFiliere(cda);
+
+        System.out.println("\nListe des apprenants par filière :");
+        for (Filiere filiere : filieres ) {
+            boolean etuVide =  true;
+            boolean formatVide =  true;
+            boolean comaFlag = false;
+            int nb = 1;
+
+            System.out.println("\nFilière : " + filiere.getLibelle());
+            System.out.print("Formateurs : ");
+            for (Enseignant enseignant : enseignants) {
+                if (enseignant.getFiliere() != null) {
+                    for (Filiere filiereEns : enseignant.getFiliere()) {
+                        if (filiere == filiereEns) {
+                            System.out.print(comaFlag ?", ":"");
+                            comaFlag = true;
+                            System.out.print(enseignant.getPrenom() + " " + enseignant.getNom());
+                            formatVide = false;
+                        }
+                    }
+                }
+            }
+            if (formatVide) {
+                System.out.println("Pas d'inscrit");
+            }
+            System.out.println("");
+            for (Etudiant etudiant : etudiants) {
+                if (filiere == etudiant.getFiliere()) {
+                    System.out.println(nb + "- " + etudiant.getPrenom() + " " + etudiant.getNom());
+                    etuVide = false;
+                    nb++;
+                }
+            }
+            if (etuVide) {
+                System.out.println("Pas d'inscrit");
+            }
+        }
 
 
 
