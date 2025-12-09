@@ -1,6 +1,7 @@
 package JSE.src;
 
-import JSE.src.Personne;
+import JSE.src.Package.Enseignant;
+import JSE.src.Package.Specialite;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -115,12 +116,43 @@ public class Main {
       // tableauCalculs();
       // compterVoyelles();
 
-        Personne gauthier = new Personne("Glad-Chambet", "Gauthier", 29);
-        gauthier.direBonjour();
+        //Personne gauthier = new Personne("Glad-Chambet", "Gauthier", 29);
+        //gauthier.direBonjour();
+        //System.out.println(gauthier.getNom());
 
-        System.out.println(gauthier.getNom());
+        Specialite javaEE = new Specialite("JAVA/JEE");
+        Specialite htmlCss = new Specialite("HTML/CSS");
+        Specialite gestionDeProjet = new Specialite("Gestion de projet");
+        Specialite js = new Specialite("JS");
+        Specialite php = new Specialite("PHP");
+
+        Specialite[] specialites = {javaEE, htmlCss, gestionDeProjet, js, php};
+
+        Enseignant enseignant1 = new Enseignant("Jacques", javaEE);
+        Enseignant enseignant2 = new Enseignant("Michel", htmlCss);
+        Enseignant enseignant3 = new Enseignant("Paul", gestionDeProjet);
+        Enseignant enseignant4 = new Enseignant("Karine", javaEE);
+        Enseignant enseignant5 = new Enseignant("Edouard", php);
+
+        Enseignant[] enseignants = {enseignant1, enseignant2, enseignant3, enseignant4, enseignant5};
+
+        for (int i = 0 ; i < 5 ; i++ ) {
+            boolean vide =  true;
+            System.out.println("Spécialité : " + specialites[i].getNom() + ", enseignants : ");
+            for (int cpt = 0; cpt < 5 ; cpt++) {
+                if (specialites[i] == enseignants[cpt].getSpecialite()) {
+                    System.out.println(enseignants[cpt].getNom());
+                    vide = false;
+                }
+            }
+            if (vide) {
+                System.out.println("Aucun enseignant");
+            }
+        }
+
+
+
+
     }
-
-
 }
 

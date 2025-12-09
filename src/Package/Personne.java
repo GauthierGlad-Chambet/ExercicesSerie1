@@ -1,4 +1,4 @@
-package JSE.src;
+package JSE.src.Package;
 
 public class Personne {
     private String nom;
