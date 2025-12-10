@@ -340,13 +340,13 @@ public class Main {
 
         Specialite[] specialites = {javaEE, htmlCss, gestionDeProjet, js, php};
 
-        Enseignant enseignant1 = new Enseignant("Jacques", "Lanoix", javaEE);
-        Enseignant enseignant2 = new Enseignant("Michel", "Brunet", javaEE);
-        Enseignant enseignant3 = new Enseignant("Paul",  "Kalkbrener", php);
-        Enseignant enseignant4 = new Enseignant("Karine", "Lavendeuse", js);
-        Enseignant enseignant5 = new Enseignant("Edouard", "Grills", gestionDeProjet);
+        Enseignant jacques = new Enseignant("Jacques", "Lanoix", javaEE);
+        Enseignant michel = new Enseignant("Michel", "Brunet", javaEE);
+        Enseignant paul = new Enseignant("Paul",  "Kalkbrener", php);
+        Enseignant karine = new Enseignant("Karine", "Lavendeuse", js);
+        Enseignant edouard = new Enseignant("Edouard", "Grills", gestionDeProjet);
 
-        Enseignant[] enseignants = {enseignant1, enseignant2, enseignant3, enseignant4, enseignant5};
+        Enseignant[] enseignants = {jacques, michel, paul, karine, edouard};
 
         Filiere cda = new Filiere("CDA", "01");
         Filiere marketing = new Filiere("Marketing", "02");
@@ -354,19 +354,19 @@ public class Main {
 
         Filiere[] filieres = {cda, marketing, assistanceDeVie};
 
-        Etudiant etudiant1 = new Etudiant("Simpson", "Homer", cda );
-        Etudiant etudiant2 = new Etudiant("Simpson", "Bart", cda );
-        Etudiant etudiant3 = new Etudiant("Vanessa", "Sultan", marketing );
-        Etudiant etudiant4 = new Etudiant("Simpson", "Marge", marketing );
-        Etudiant etudiant5 = new Etudiant("Simpson", "Lisa", marketing );
+        Etudiant homer = new Etudiant("Simpson", "Homer", cda );
+        Etudiant bart = new Etudiant("Simpson", "Bart", cda );
+        Etudiant vanessa = new Etudiant("Vanessa", "Sultan", marketing );
+        Etudiant marge = new Etudiant("Simpson", "Marge", marketing );
+        Etudiant lisa = new Etudiant("Simpson", "Lisa", marketing );
 
-        Etudiant[] etudiants = {etudiant1, etudiant2, etudiant3, etudiant4, etudiant5};
+        Etudiant[] etudiants = {homer, bart, vanessa, marge, lisa};
 
-        enseignant1.setFiliere(cda, marketing);
-        enseignant2.setFiliere(marketing, assistanceDeVie);
-        enseignant3.setFiliere(cda);
-        enseignant4.setFiliere(marketing);
-        enseignant5.setFiliere(cda);
+        jacques.setFiliere(cda, marketing);
+        michel.setFiliere(marketing, assistanceDeVie);
+        paul.setFiliere(cda);
+        karine.setFiliere(marketing);
+        edouard.setFiliere(cda);
 
         //Exercice 1 : Nombre Pair ou Impair
         // pairImpair();
