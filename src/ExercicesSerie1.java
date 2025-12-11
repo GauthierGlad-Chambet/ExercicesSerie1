@@ -80,8 +80,6 @@ public class ExercicesSerie1 {
         // choixRecherche(enseignants, etudiants, filieres);
     }
 
-
-
     //Exercice 1 : Nombre Pair ou Impair
     public static void pairImpair() {
         System.out.println("Entrez un nombre : ");
